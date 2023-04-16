@@ -2,7 +2,7 @@
 
 namespace WebApplication2.Models
 {
-    public class RegisterViewModel
+    public class RegisterViewModel : ModelView
     {
         //[Display(Name ="Kullanıcı Adı", Prompt ="johndoe")]
         [Required(ErrorMessage = "Username is required")]
