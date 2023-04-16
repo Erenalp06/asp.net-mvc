@@ -129,6 +129,7 @@ namespace WebApplication2.Controllers
             User user = _databaseContext.Users.SingleOrDefault(x => x.Id == userId);
 
             ViewData["FullName"] = user.FullName;
+            ViewData["ProfileImage"] = user.ProfileImageFileName;
         }
 
         [HttpPost]
@@ -162,6 +163,32 @@ namespace WebApplication2.Controllers
                 _databaseContext.SaveChanges();
 
                 ViewData["result"] = "PasswordChanged";
+            }
+            ProfileInfoLoader();
+            return View("Profile");
+        }
+
+        [HttpPost]
+        public IActionResult ProfileChangeImage([Required] IFormFile file)
+        {
+            if (ModelState.IsValid)
+            {
+                Guid userId = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                User user = _databaseContext.Users.SingleOrDefault(x => x.Id == userId);
+
+                string fileName = $"guid_{userId}.jpg";
+
+                Stream stream = new FileStream($"wwwroot/uploads/{fileName}", FileMode.OpenOrCreate);
+
+                file.CopyTo(stream);
+
+                stream.Close();
+                stream.Dispose();
+
+                user.ProfileImageFileName = fileName;
+                _databaseContext.SaveChanges();
+
+                return RedirectToAction(nameof(Profile));
             }
             ProfileInfoLoader();
             return View("Profile");
