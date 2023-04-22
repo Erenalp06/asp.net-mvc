@@ -1,0 +1,71 @@
+﻿
+
+/* Arka plan rengi */
+body {
+    background-color: #f2f2f2;
+}
+
+/* Ana başlık */
+h1 {
+    color: #333333;
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 80px;
+}
+
+/* Alt başlık */
+h2 {
+    color: #555555;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+/* İçerik alanı */
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 40px;
+}
+
+/* Girdi alanları */
+input[type=text],
+textarea {
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Butonlar */
+button {
+    background-color: #1874cd;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+    /* Buton hover efekti */
+    button:hover {
+        background-color: #0d53a4;
+    }
+
+/* Görsel */
+img {
+    display: block;
+    margin-bottom:2em;
+    
+    
+}
+
+

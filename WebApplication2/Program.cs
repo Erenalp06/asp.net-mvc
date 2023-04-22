@@ -19,7 +19,7 @@ builder.Services
         opts.Cookie.Name = ".WebApplication2.auth";
         opts.ExpireTimeSpan = TimeSpan.FromDays(7);
         opts.SlidingExpiration = false;
-        opts.LoginPath = "/Account/Login";
+        //opts.LoginPath = "/Home/Index";
         opts.LogoutPath = "/Account/Logout";
         opts.AccessDeniedPath = "/Home/AccessDenied";
     });
