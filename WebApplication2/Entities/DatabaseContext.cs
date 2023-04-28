@@ -15,5 +15,7 @@ namespace WebApplication2.Entities
 
         public DbSet<User> Users { get; set; }
         public DbSet<Project> Projects { get; set; }
+
+        public DbSet<PPaages> PPaages { get; set; }
     }
 }

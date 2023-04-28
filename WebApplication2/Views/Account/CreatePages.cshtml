@@ -1,0 +1,488 @@
+﻿@model PageModel
+
+@{
+	ViewData["Title"] = "Create Your Own Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="path/to/your/custom/script.js"></script>
+    <style>
+    
+
+.form-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+
+.form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+}
+
+textarea.form-control {
+  height: 150px;
+  resize: vertical;
+}
+
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #4e73df;
+  border: 1px solid #4e73df;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #2e59d9;
+  border-color: #2e59d9;
+}
+
+
+.fa-sign-in-alt {
+  margin-right: 0.5rem;
+}
+.form-group-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-group-1 {
+  width: calc(33.33% - 1rem);
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  height: 70px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 5px;
+  border: none;
+}
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+    <div class="row">
+	<div class="">
+		<h1 class="display-4 border-bottom text-center pb-2">@ViewData["Title"]</h1>
+	</div>
+</div>
+
+
+
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div asp-validation-summary="All" class="text-danger small"></div>
+      <form method="post" asp-action="CreatePages" enctype="multipart/form-data">
+        <div class="form-group mb-3">
+          <label asp-for="Id" class="form-label">Id</label>
+          <input asp-for="Id" class="form-control" placeholder="Id" readonly value=@ViewData["Id"]/>
+          <span asp-validation-for="Id" class="text-danger small"></span>
+        </div>
+        <div class="form-group mb-3">
+          <label asp-for="Fullname" class="form-label">Tam İsim (Kartlarda Görünecektir)</label>
+          <input asp-for="Fullname" class="form-control" placeholder="İsim Soyisim" readonly value=@ViewData["FullName"]/>
+          <span asp-validation-for="Fullname" class="text-danger small"></span>
+        </div>
+        <div class="form-group mb-3">
+          <label asp-for="Description" class="form-label">Sayfa Açıklaması (Kartlarda Görünecektir)</label>
+          <textarea asp-for="Description" class="form-control" placeholder="Sayfa Açıklaması"></textarea>
+          <span asp-validation-for="Description" class="text-danger small"></span>
+        </div>
+
+        <div class="form-group mb-3">
+          <label asp-for="CVText" class="form-label">CV Metni</label>
+          <textarea asp-for="CVText" class="form-control" placeholder="Birkaç cümle ile cv'nizi tanıtın...'"></textarea>
+          <span asp-validation-for="CVText" class="text-danger small"></span>
+        </div>
+
+        <div class="form-group mb-3">
+          <label asp-for="CVPath" class="form-label">CV Dosyası Yükle</label>
+          <input type="file" class="form-control" name="CVPath" accept=".pdf"/>
+          <span asp-validation-for="CVPath" class="text-danger small"></span>
+          <div id="pdf-preview"></div>
+        </div>
+
+        <!-- Skills-->
+      <div asp-validation-summary="All" class="text-danger small"></div>
+          <label class="form-label">Yetenekler</label>
+    <div class="form-group">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input language-checkbox" id="javaCheckbox" name="javaCheckbox">            
+            <input type="text" class="form-control" name="skillName0">
+        </div>
+        <div class="form-floating level-input" style="display:none;">
+            <input type="text" class="form-control" name="javaLevel">
+            <label>Seviyenizi giriniz</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input language-checkbox" id="pythonCheckbox" name="pythonCheckbox" >
+            <input type="text" class="form-control" name="skillName1">
+        </div>
+        <div class="form-floating level-input" style="display:none;">
+            <input type="text" class="form-control" name="pythonLevel">
+            <label>Seviyenizi giriniz</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input language-checkbox" id="cSharpCheckbox" name="cSharpCheckbox" >
+            <input type="text" class="form-control" name="skillName2">
+        </div>
+        <div class="form-floating level-input" style="display:none;">
+            <input type="text" class="form-control" name="cSharpLevel">
+            <label>Seviyenizi giriniz</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input language-checkbox" id="unityCheckbox" name="unityCheckbox" >
+            <input type="text" class="form-control" name="skillName3">
+        </div>
+        <div class="form-floating level-input" style="display:none;">
+            <input type="text" class="form-control" name="unityLevel">
+            <label>Seviyenizi giriniz</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input language-checkbox" id="figmaCheckbox" name="figmaCheckbox" >
+            <input type="text" class="form-control" name="skillName4">
+        </div>
+        <div class="form-floating level-input" style="display:none;">
+            <input type="text" class="form-control" name="figmaLevel">
+            <label>Seviyenizi giriniz</label>
+        </div>
+    </div>
+    
+
+        
+
+       
+        
+
+        <div class="form-group mb-3">
+          <label asp-for="PortfolioText" class="form-label">Proje Metni</label>
+          <textarea asp-for="PortfolioText" class="form-control" placeholder="Projenizi özetleyin...'"></textarea>
+          <span asp-validation-for="PortfolioText" class="text-danger small"></span>
+        </div>
+
+        <div class="form-group mb-3">
+          <label asp-for="PortfolioPath" class="form-label">Proje Github Linki</label>
+          <input asp-for="PortfolioPath" class="form-control" placeholder="Proje Linkiniz"/>
+          <span asp-validation-for="PortfolioPath" class="text-danger small"></span>
+          <div id="pdf-preview"></div>
+        </div>
+
+        <div class="form-group mb-3">
+          <label asp-for="Contact" class="form-label">İletişim Bilgileri</label>
+          <textarea asp-for="Contact" class="form-control" placeholder="İletişim adresleriniz..."></textarea>
+          <span asp-validation-for="Contact" class="text-danger small"></span>
+        </div>
+
+        <div class="form-group mb-3">
+          <label asp-for="AboutMe" class="form-label">Kendinizden Bahsedin</label>
+          <textarea asp-for="AboutMe" class="form-control" placeholder="Kendiniz hakkında bir kaç cümleyle bilgi verin..."></textarea>
+          <span asp-validation-for="AboutMe" class="text-danger small"></span>
+        </div>
+
+        <div class="form-group mb-3">
+    <label asp-for="PageImage" class="form-label">Sayfanızın Resmini Yükleyin (Kartlarda Görünecektir)</label>
+    <input type="file" class="form-control" name="PageImage" accept=".jpg" onchange="previewImage(event)" />
+    <span asp-validation-for="PageImage" class="text-danger small"></span>
+    <div id="image-preview"></div>
+    </div>
+    <div class="form-group mb-3">
+          <label asp-for="PageURL" class="form-label">URL</label>
+          <input asp-for="PageURL" class="form-control" placeholder="URL" readonly value="@ViewData["Fullname"]_@ViewData["Id"]"/>
+          <span asp-validation-for="PageURL" class="text-danger small"></span>
+        </div>
+<label asp-for="PageURL" class="form-label">Görünüm</label>
+        <div class="form-group-wrapper">
+            
+  <div class="form-group-1 mb-3 d-flex align-items-center">          
+    <label for="colorPicker">Sayfanızın Arka Plan Rengini Seçin:</label>
+    <input type="color" id="colorPicker" name="colorPicker" onchange="handleColorChange()">          
+  </div>
+  <div class="form-group-1 mb-3 d-flex align-items-center">         
+    <label for="colorPicker1">Bilgi Kartlarının Rengini Seçin:</label>
+    <input type="color" id="colorPicker1" name="colorPicker1" onchange="handleColorChange()">
+  </div>
+  <div class="form-group-1 mb-3 d-flex align-items-center">         
+    <label for="colorPicker2">Yazı Rengini Seçin:</label>
+    <input type="color" id="colorPicker2" name="colorPicker2" onchange="handleColorChange()">
+  </div>
+</div>
+
+<div class="form-group mb-3">
+  <label for="fontSelect" class="mb-2">Yazı Tipini Seçin:</label>
+  <div class="input-group">
+    <select id="fontSelect" name="fontSelect" onchange="handleFontChange()" class="form-select">
+     <option value="Arial">Arial</option>
+    <option value="Verdana">Verdana</option>
+    <option value="Times New Roman">Times New Roman</option>
+    <option value="Courier New">Courier New</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Helvetica">Helvetica</option>
+    <option value="Tahoma">Tahoma</option>
+    <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+    <option value="Impact">Impact</option>
+    <option value="Book Antiqua">Book Antiqua</option>
+    <option value="Garamond">Garamond</option>
+    <option value="Palatino Linotype">Palatino Linotype</option>
+    <option value="Lucida Console">Lucida Console</option>
+    <option value="Century Gothic">Century Gothic</option>
+    <option value="Trebuchet MS">Trebuchet MS</option>
+    <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+    <option value="Arial Black">Arial Black</option>
+    <option value="Comic Sans MS">Comic Sans MS</option>
+    <option value="Consolas">Consolas</option>
+    <option value="Lucida Grande">Lucida Grande</option>
+    <option value="Microsoft Sans Serif">Microsoft Sans Serif</option>
+    <option value="Rockwell">Rockwell</option>
+    <option value="Segoe UI">Segoe UI</option>
+    <option value="Symbol">Symbol</option>
+    <option value="Webdings">Webdings</option>
+    <option value="Wingdings">Wingdings</option>
+    <option value="Calibri">Calibri</option>
+    <option value="Cambria">Cambria</option>
+    <option value="Candara">Candara</option>
+    <option value="Constantia">Constantia</option>
+    <option value="Corbel">Corbel</option>
+    <option value="Ebrima">Ebrima</option>
+    <option value="Gabriola">Gabriola</option>
+    <option value="Lato">Lato</option>
+    <option value="Leelawadee">Leelawadee</option>
+    <option value="Malgun Gothic">Malgun Gothic</option>
+    <option value="Meiryo">Meiryo</option>
+    <option value="Mongolian Baiti">Mongolian Baiti</option>
+    <option value="Myanmar Text">Myanmar Text</option>
+    <option value="Nirmala UI">Nirmala UI</option>
+    <option value="Segoe Print">Segoe Print</option>
+    <option value="SimSun">SimSun</option>
+    <option value="Sylfaen">Sylfaen</option>
+    <option value="Yu Gothic">Yu Gothic</option>
+      
+</select>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+        <div class="form-group d-grid mb-3">
+          <button type="submit" class="btn btn-primary"><span class="fa fa-sign-in-alt me-2"></span>Sayfa Oluştur</button>
+        </div>
+
+
+      
+
+      
+    
+</form>
+</div>
+    </div>
+
+
+    
+  
+</div>
+</body>
+
+
+
+
+
+<script>
+    function previewImage(event) {
+        const input = event.target;
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const preview = document.getElementById('image-preview');
+                preview.innerHTML = '<img src="' + e.target.result + '" class="img-fluid" />';
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<script>
+  function handleFontChange() {
+    var font = document.getElementById("fontSelect").value;
+    console.log("Seçilen font: " + font);
+    // Seçilen fontu işleyebilirsiniz
+  }
+</script>
+
+
+
+<script>
+  const fileInput = document.querySelector('input[type="file"]');
+  const preview = document.querySelector('#pdf-preview');
+
+  fileInput.addEventListener('change', function() {
+    const file = this.files[0];
+
+    if (file.type === 'application/pdf') {
+      const reader = new FileReader();
+
+      reader.onload = function() {
+        const pdf = document.createElement('object');
+        pdf.data = reader.result;
+        pdf.type = 'application/pdf';
+        pdf.width = '100%';
+        pdf.height = '600';
+
+        preview.innerHTML = '';
+        preview.appendChild(pdf);
+      };
+
+      reader.readAsDataURL(file);
+    } else {
+      alert('Lütfen PDF dosyası yükleyin.');
+    }
+  });
+</script>
+
+<script>
+    // Dinamik olarak seviye alanını göster/gizle
+    const languageCheckboxes = document.querySelectorAll('.language-checkbox');
+    languageCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('click', () => {
+            const levelInput = checkbox.parentNode.nextElementSibling;
+            if (levelInput.classList.contains('level-input')) {
+                if (checkbox.checked) {
+                    levelInput.style.display = 'block';
+                } else {
+                    levelInput.style.display = 'none';
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    function handleColorChange() {
+  var colorPicker = document.getElementById('colorPicker');
+  var selectedColor = colorPicker.value;
+  console.log('Seçilen renk:', selectedColor);
+  
+}
+</script>
+
+
+
+@section Scripts{
+	@if(ViewData["result"] != null && ViewData["result"] == "PageAdded"){
+		<script>
+			toastr["success"]("page added successfuly", "added")
+		</script>
+	}
+    @if(ViewData["result"] != null && ViewData["result"] == "multiple copies"){
+		<script>
+			toastr["warning"]("hatalı işlem", "birden fazla kopya")
+		</script>
+	}
+	
+}
+
+<script>
+    $(document).ready(function() {
+        var result = '@ViewData["result"]';
+        if (result === 'PageAdded') {
+            // PageAdded toast mesajını göstermek için gerekli kodlar burada yer alır
+            toastr.success('Sayfa başarıyla eklendi.');
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+

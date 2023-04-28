@@ -6,11 +6,450 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Create Your Own Pages</title>
+  <title>Kendi Kişisel Sayfanızı Oluşturun</title>
   
   <link rel="stylesheet" type="text/css" href="css/style2.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
+
+      
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header stil */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+    .header img {
+        height: 50px;
+    }
+
+    .header h1 {
+        font-size: 36px;
+        color: #333;
+    }
+
+/* Form stil */
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+    .form h2 {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .form label {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .form input[type="text"],
+    .form input[type="email"],
+    .form input[type="tel"],
+    .form textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        background-color: #f2f2f2;
+    }
+
+    .form input[type="file"] {
+        margin-top: 10px;
+    }
+
+    .form textarea {
+        height: 150px;
+    }
+
+    .form input[type="submit"] {
+        background-color: #1874cd;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .form input[type="submit"]:hover {
+            background-color: #13549d;
+        }
+
+
+.footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+    .footer p {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .footer a {
+        color: #fff;
+    }
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+#features .feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#features .icon {
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.testimonial-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 0;
+    position: relative;
+}
+
+.testimonials {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+}
+
+.testimonial-card {
+    flex: 0 0 400px;
+    margin-right: 30px;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.testimonial-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+    float: left;
+}
+
+.testimonial-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.testimonial-text {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.testimonial-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+    z-index: 1;
+}
+
+.testimonial-arrow {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .testimonial-arrow:hover {
+        background-color: #555;
+        color: #fff;
+    }
+
+.testimonial-arrow-left {
+    position: absolute;
+    left: 0;
+}
+
+.testimonial-arrow-right {
+    position: absolute;
+    right: 0;
+}
+
+.testimonials-wrapper {
+    overflow-x: hidden;
+}
+
+.testimonials {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+    .testimonial-navigation a {
+        color: #333;
+        font-size: 24px;
+        margin: 0 10px;
+    }
+
+        .testimonial-navigation a:hover {
+            cursor: pointer;
+        }
+
+.prev {
+    float: left;
+}
+
+.next {
+    float: right;
+}
+
+.testimonial-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 0;
+    position: relative;
+}
+
+.testimonials {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.testimonial-card {
+    flex: 0 0 400px;
+    margin-right: 30px;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.testimonial-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+    float: left;
+}
+
+.testimonial-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.testimonial-text {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.testimonial-navigation {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .testimonial-navigation a {
+        font-size: 30px;
+        color: #ccc;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+        .testimonial-navigation a:hover {
+            color: #666;
+        }
+
+    .testimonial-navigation .prev {
+        margin-right: auto;
+        transform: translateX(-20px);
+    }
+
+    .testimonial-navigation .next {
+        margin-left: auto;
+        transform: translateX(20px);
+    }
+
+
+
+.custom-button {
+    padding: 12px 24px;
+    font-size: 40px;
+    background-color: #007bff;
+    border: 2px solid #007bff;
+    color: #fff;
+    border-radius: 10px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    display: block;
+    margin: 0 auto;
+}
+
+    .custom-button:hover {
+        background-color: #fff;
+        color: #007bff;
+        cursor: pointer;
+    }
+
+.card-1 {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 5px #ccc;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 250px;
+    height: 300px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+    .card-1 i {
+        font-size: 2em;
+        display: block;
+        margin: 0 auto;
+    }
+
+#features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+    #features .card-1:nth-child(1) {
+        background-color: #f26d6d;
+        color: white;
+    }
+
+    #features .card-1:nth-child(2) {
+        background-color: #ffa500;
+        color: white;
+    }
+
+    #features .card-1:nth-child(3) {
+        background-color: #ff69b4;
+        color: white;
+    }
+
+    #features .card-1:nth-child(4) {
+        background-color: #0080ff;
+        color: white;
+    }
+
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+      .card:hover {
+  transform: scale(1.05);
+  transition: all .2s ease-in-out;
+}
+
+.card-1 {
+        display: inline-block;
+        vertical-align: top;
+        width: 20%;
+        padding: 20px;
+        background-color: #f2f2f2;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    .card-1 h3, .card-1 p {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .card-1 {
+  position: relative;
+  padding-bottom: 30px; 
+}
+
+
+}
+
+
+
 
 
 
@@ -20,7 +459,7 @@
 <body>
   
     <header>
-      <h1>Create Your Own Pages</h1>
+      <h1>Kendi Kişisel Sayfanızı Oluşturun</h1>
       
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -85,21 +524,20 @@
   <h2 class="mb-4">Sayfanızın İçeriğini Tamamladınız Şimdi ise Sıra Sayfanızın görünümünü ayarlamak</h2>
 
 
-  <div class="card-1">
-    
+ <div class="card-1">
     <h3>Arkaplan Renginizi Seçin</h3>
     <p>İstediğiniz bir renk seçin</p>
-  </div>
-  <div class="card-1">
-    
+</div>
+
+<div class="card-1">
     <h3>Sayfanızda kullanmak istediğiniz fontu seçin</h3>
     <p>İstediğiniz bir font seçin</p>
-  </div>
-  <div class="card-1">
-    
+</div>
+
+<div class="card-1">
     <h3>Kullanmak istediğiniz fotoğrafları ve videoları seçin</h3>
     <p>Sayfanızda görünmesini istediğiniz içerikleri ekleyin</p>
-  </div>
+</div>
 
   
 
@@ -117,7 +555,7 @@
 
 
 
-<button class="btn btn-primary custom-button">Kendi Kişisel Sayfanı Oluşturmak İçin Tıkla</button>
+<button id="createPagesButton" class="btn btn-primary custom-button">Kendi Kişisel Sayfanı Oluşturmak İçin Tıkla</button>
 
 <h1>İnsanların Kendini tanıtığı sayfalara da ulaşabilirsiniz</h1>
 
@@ -270,6 +708,13 @@ $(document).ready(function() {
       alert("Verileri çekerken hata oluştu!");
     }
   });
+});
+</script>
+
+
+<script>
+    document.getElementById("createPagesButton").addEventListener("click", function() {
+    window.location.href = "/Account/CreatePages";
 });
 </script>
 

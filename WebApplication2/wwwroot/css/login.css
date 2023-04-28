@@ -1,0 +1,100 @@
+﻿body {
+    background-color: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 576px) {
+    form {
+        padding: 20px !important;
+    }
+
+    form {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 30px;
+        margin-top: 50px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+
+    .form-label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+    .form-control {
+        border-radius: 25px;
+        padding-left: 40px;
+        border: none;
+        background-color: #f0f0f0;
+        color: #555;
+        box-shadow: none;
+        height: 50px;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .form-control:focus {
+            box-shadow: none;
+            background-color: #fff;
+        }
+
+            .form-control:focus + .fa-user,
+            .form-control:focus + .fa-lock {
+                color: #007bff;
+            }
+
+        .form-control:hover {
+            background-color: #e2e2e2;
+        }
+
+    .fa-user,
+    .fa-lock {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 15px;
+        color: #a5a5a5;
+        font-size: 18px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+
+        .btn-primary:focus {
+            box-shadow: none;
+        }
+
+    .fa-sign-in-alt {
+        font-size: 18px;
+    }
+
+
+
+    .form-control {
+        height: 45px;
+    }
+
+    .fa-user,
+    .fa-lock {
+        font-size: 16px;
+    }
+}

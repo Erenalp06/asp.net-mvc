@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>İsmail - Portfolio</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css'>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .content-item {
+            width: 400px;
+            margin: 20px;
+        }
+
+        .content-item h2 {
+            margin-top: 0;
+        }
+
+        .content-item p {
+            margin-top: 10px;
+        }
+
+        .content-item a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .content-item a:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class='container mt-5'>
+        <div class='card'>
+            <div class='card-header'>
+                <h1 class='text-center'>İsmail - Porfolio</h1>
+            </div>
+            <div class='card-body'>
+                <div class='row'>
+                    <div class='col-md-6'>
+                        <div class='card mb-3'>
+                            <div class='card-body'>
+                                <h2 class='card-title'>About Me</h2>
+                                <p class='card-text'>fgouysduıogsdfgfsdg</p>
+                            </div>
+                        </div>
+                        <div class='card mb-3'>
+                            <div class='card-body'>
+                                <h2 class='card-title'>Contact Information</h2>
+                                <p class='card-text'>dfguhsdoglsdg</p>
+                            </div>
+                        </div>
+                        <div class='card mb-3'>
+                            <div class='card-body'>
+                                <h2 class='card-title'>Skills</h2>
+
+                                <h5 class='card-title'>Python</h5>
+                                <div class='progress'>
+                                    <div class='progress-bar bg-primary' role='progressbar' style='width: 50%;' aria-valuenow='50' aria-valuemin='0' aria-valuemax='100'>50%</div>
+                                </div> <br />
+                                <h5 class='card-title'>Unity</h5>
+                                <div class='progress'>
+                                    <div class='progress-bar bg-success' role='progressbar' style='width: 40%;' aria-valuenow='40' aria-valuemin='0' aria-valuemax='100'>40%</div>
+                                </div> <br />
+                                <h5 class='card-title'>Figma</h5>
+                                <div class='progress'>
+                                    <div class='progress-bar bg-info' role='progressbar' style='width: 35%;' aria-valuenow='35' aria-valuemin='0' aria-valuemax='100'>35%</div>
+                                </div> <br />
+                                <h5 class='card-title'>JAVA SE</h5>
+                                <div class='progress'>
+                                    <div class='progress-bar bg-secondary' role='progressbar' style='width: 90%;' aria-valuenow='90' aria-valuemin='0' aria-valuemax='100'>90%</div>
+                                </div> <br />
+                            </div>
+                        </div>
+                        <div class='card mb-3'>
+                            <div class='card-body'>
+                                <h2 class='card-title'>Project Explanation</h2>
+                                <p class='card-text'>ldfhglkdfjglsdfgfd</p>
+                            </div>
+                        </div>
+                        <div class='card mb-3'>
+                            <div class='card-body'>
+                                <h2 class='card-title'>Project Github Link</h2>
+                                <p class='card-text'>sfdghsduşglsdfgf</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-md-6'>
+                        <div class='card mb-3'>
+                            <div class='card-body'>
+                                <h2 class='card-title'>CV</h2>
+                                <p class='card-text'>asdjkfhıasfjksadfsdaf</p>
+                                <canvas id="pdf-canvas"></canvas>
+                                <a href='/public/uploads/CVErenalpTeksen.pdf' class='btn btn-primary' download='CVErenalpTeksen.pdf'>Download CV</a>
+
+
+
+
+
+                            </div>
+                        </div>                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap 5 JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js" integrity="sha512-pMmHr/SRLz0t+c1Ym83s+D9sCtqEjJRW/58hIQLwHxvjIm+JNlOCCvNmtHSTCEk9OQF3qZjvPZluJkDmyI1+lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
+
+    <!-- PDF dosyasını yüklemek için gerekli olan PDF.js kütüphanesi -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+
+    <script>
+        const url = "/public/uploads/CVErenalpTeksen.pdf";
+        pdfjsLib.getDocument(url).promise.then(pdf => {
+            const numPages = pdf.numPages;
+            pdf.getPage(1).then(page => {
+                const viewport = page.getViewport({ scale: 1.0 });
+                const canvas = document.getElementById("pdf-canvas");
+                const context = canvas.getContext("2d");
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                page.render({ canvasContext: context, viewport: viewport });
+            });
+        });
+    </script>
+
+
+    
+
+    
+
+
+</body>
+
+        </html>

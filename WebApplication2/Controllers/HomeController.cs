@@ -18,7 +18,7 @@ namespace WebApplication2.Controllers
             _databaseContext = databaseContext;
         }
 
-        [Authorize]
+        
         public IActionResult Index()
         {
             return View();
@@ -44,7 +44,7 @@ namespace WebApplication2.Controllers
                     Description = project.Description,
                     ProjectURL = project.ProjectURL
 
-                    // diğer özellikleri buraya ekle
+                    
                 };
                 projectList.Add(p);
             }
