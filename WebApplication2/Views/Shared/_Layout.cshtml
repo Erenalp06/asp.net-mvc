@@ -9,70 +9,169 @@
     <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApplication2.styles.css" asp-append-version="true" />
+    <style>
+    .navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #dddddd;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+  color: #4e4e4e;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.nav-link {
+  color: #4e4e4e;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.nav-link:hover {
+  color: #212529;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  background-color: #f2f2f2;
+}
+
+.navbar .border-bottom {
+  border-width: 2px;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.navbar-nav > li:not(:last-child) {
+  margin-right: 0;
+}
+
+.navbar-nav .nav-item:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.navbar-nav .nav-link {
+  color: #1e90ff;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+footer {
+			text-align: center;
+			padding: 20px;
+		}
+
+
+
+
+
+</style>
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApplication2</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        
+  <div class="container-fluid">
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CreateOwnPage</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+      <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item">
+          <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house me-2"></i>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy"><i class="fa-solid fa-user-lock me-2"></i>Privacy</a>
+        </li>
 
-                        @if(User.Identity.IsAuthenticated){
-                            @if(User.IsInRole("admin")){
-                                <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Administrator</a>
-                        </li>
-                            }
-                            
-                            <li class="nav-item ms-auto">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile"><i class="fa-solid fa-user me-2"></i>@User.FindFirst("Username").Value</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
-                            </li>
-                        }
-                        else
-                        {
-                              <li class="nav-item ms-auto">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register"><i class="fa-solid fa-user me-2"></i>Register</a>
-                        </li>
-                        
-                        }
+        @if(User.Identity.IsAuthenticated){
+        @if(User.IsInRole("admin")){
+        <li class="nav-item">
+          <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Administrator</a>
+        </li>
+        }
 
-                        
-
-
-                    </ul>
-                </div>
+            <li class="nav-item ms-auto">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile"><i class="fa-solid fa-user me-2"></i>@User.FindFirst("Username").Value</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
+            </li>
+            }
+            else {
+            <li class="nav-item ms-auto">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register"><i class="fa-solid fa-user me-2"></i>Register</a>
+            </li>
+            }
+            </ul>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - WebApplication2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+            </div>
+            </nav>
+
+
+    </header>
+    <div class="container mt-5">
+  <main role="main" class="pb-3">
+    @RenderBody()
+  </main>
+</div>
+<footer class="bg-dark text-light mt-5" style="width: 100%;">
+  <div class="py-4">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <h5>About Us</h5>
+        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed volutpat eros quis nulla hendrerit tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc eget eros malesuada, fermentum est quis, tempus sapien.</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h5>Contact Us</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><i class="fas fa-map-marker-alt fa-fw"></i>123 Main St, Anytown USA</li>
+          <li class="mb-2"><i class="fas fa-phone fa-fw"></i>555-555-5555</li>
+          <li><i class="fas fa-envelope fa-fw"></i>email@example.com</li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h5>Follow Us</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="#"><i class="fab fa-facebook fa-fw"></i>Facebook</a></li>
+          <li class="mb-2"><a href="#"><i class="fab fa-twitter fa-fw"></i>Twitter</a></li>
+          <li><a href="#"><i class="fab fa-instagram fa-fw"></i>Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class=" py-2">
+    <div class="p-0 text-center" style="width: 100%;">
+      <p class="text-muted mb-0">&copy; 2023 - CreateOwnPage - <a href="#" class="text-dark">Terms of Use</a> - <a href="#" class="text-light">Privacy Policy</a></p>
+    </div>
+  </div>
+</footer>
+
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/toastrjs/toastr.min.js"></script>

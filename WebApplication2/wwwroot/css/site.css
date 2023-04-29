@@ -43,3 +43,26 @@ body {
         
     }
 
+#createPagesButton {
+    font-size: 2.5rem; 
+    padding: 0.75rem 1.5rem; 
+}
+
+@media only screen and (max-width: 768px) {
+    #createPagesButton {
+        font-size: 1.25rem; 
+        padding: 0.5rem 1rem; 
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .testimonials-wrapper {
+        display: block !important;
+    }
+
+    .testimonial-card {
+        margin-bottom: 20px !important;
+    }
+}
+
+

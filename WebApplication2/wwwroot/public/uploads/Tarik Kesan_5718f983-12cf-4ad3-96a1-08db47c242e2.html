@@ -71,6 +71,11 @@
         .card {
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
+
+        #pdf-canvas {
+            width: 100%;
+        }
+
     </style>
 </head>
 <body>
@@ -124,17 +129,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class='col-md-6'>                                
-                                <div class='card mb-3 hover-zoom' style='background-color: #ffffff'>
-                                    <div class='card-body'>
-                                        <h2 class='card-title'>CV</h2>
-                                        <p class='card-text'>alfgsodıfgjkdsfg</p>
-                                        <canvas id='pdf-canvas'></canvas>
-                                        <a href='/public/uploads/cvim.pdf' class='btn btn-primary' download='cvim.pdf'>Download CV</a>
-                                    </div>                                
-                                
+                    <div class='col-md-6'>
+                        <div class='card mb-3 hover-zoom' style='background-color: #ffffff'>
+                            <div class='card-body'>
+                                <h2 class='card-title'>CV</h2>
+                                <p class='card-text'>alfgsodıfgjkdsfg</p>
+                                <canvas id='pdf-canvas'></canvas>
+                                <a href='/public/uploads/cvim.pdf' class='btn btn-primary' download='cvim.pdf'>Download CV</a>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -162,7 +166,10 @@
                 page.render({ canvasContext: context, viewport: viewport });
             });
         });
-    </script>                        
+    </script>
+    
+
         </body>
 
         </html>
+
